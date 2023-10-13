@@ -1,0 +1,15 @@
+out
+*.sw?
+*.pyc
+*.jpg
+*.png
+*.pickle
+*.aux
+*.log
+*.nav
+*.out
+*.pdf
+*.snm
+*.tex
+*.toc
+*.vrb

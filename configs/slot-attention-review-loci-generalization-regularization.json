@@ -1,0 +1,125 @@
+{                                                                                                     
+  "model_path": "slot-attention-review",
+  "num_workers": 4,
+  "prefetch_factor": 1,
+  "learning_rate": 0.0, 
+  "weight_decay": 0.001,
+  "sequence_len": 1, 
+  "backprop_steps": 20,
+  "pretrainer_iterations": 3,
+  "pretraining_mode": "all",
+  "epochs": 1000,                                                                                   
+  "teacher_forcing": 10,                                                                              
+  "world_size": 1,
+  "evalualte_ami": true,
+  "data": {
+        "train": [
+            { "path": "./data/Datasets-HDF5-Compressed/SlottAttentionReview/mnist-train-256x256.hdf5", "weight": 1.0, "split": false},
+            { "path": "./data/Datasets-HDF5-Compressed/SlottAttentionReview/dsprites-train-256x256.hdf5", "weight": 1.0, "split": false},
+            { "path": "./data/Datasets-HDF5-Compressed/SlottAttentionReview/shapes-train-256x256.hdf5", "weight": 1.0, "split": false},
+            { "path": "./data/Datasets-HDF5-Compressed/SlottAttentionReview/abstract-train-256x256.hdf5", "weight": 1.0, "split": false},
+            { "path": "./data/Datasets-HDF5-Compressed/SlottAttentionReview/clevr-train-256x256.hdf5", "weight": 1.0, "split": false},
+            { "path": "./data/Datasets-HDF5-Compressed/SlottAttentionReview/shop-train-256x256.hdf5", "weight": 1.0, "split": false},
+            { "path": "./data/Datasets-HDF5-Compressed/SlottAttentionReview/gso-train-256x256.hdf5", "weight": 1.0, "split": false}
+        ],
+        "val": [
+            { "path": "./data/Datasets-HDF5-Compressed/SlottAttentionReview/mnist-general-256x256.hdf5", "weight": 1.0, "split": false},
+            { "path": "./data/Datasets-HDF5-Compressed/SlottAttentionReview/dsprites-general-256x256.hdf5", "weight": 1.0, "split": false},
+            { "path": "./data/Datasets-HDF5-Compressed/SlottAttentionReview/shapes-general-256x256.hdf5", "weight": 1.0, "split": false},
+            { "path": "./data/Datasets-HDF5-Compressed/SlottAttentionReview/abstract-general-256x256.hdf5", "weight": 1.0, "split": false},
+            { "path": "./data/Datasets-HDF5-Compressed/SlottAttentionReview/clevr-general-256x256.hdf5", "weight": 1.0, "split": false},
+            { "path": "./data/Datasets-HDF5-Compressed/SlottAttentionReview/shop-general-256x256.hdf5", "weight": 1.0, "split": false},
+            { "path": "./data/Datasets-HDF5-Compressed/SlottAttentionReview/gso-general-256x256.hdf5", "weight": 1.0, "split": false}
+        ],
+        "test": [
+            { "path": "./data/Datasets-HDF5-Compressed/SlottAttentionReview/mnist-general-256x256.hdf5", "weight": 1.0, "split": false},
+            { "path": "./data/Datasets-HDF5-Compressed/SlottAttentionReview/dsprites-general-256x256.hdf5", "weight": 1.0, "split": false},
+            { "path": "./data/Datasets-HDF5-Compressed/SlottAttentionReview/shapes-general-256x256.hdf5", "weight": 1.0, "split": false},
+            { "path": "./data/Datasets-HDF5-Compressed/SlottAttentionReview/abstract-general-256x256.hdf5", "weight": 1.0, "split": false},
+            { "path": "./data/Datasets-HDF5-Compressed/SlottAttentionReview/clevr-general-256x256.hdf5", "weight": 1.0, "split": false},
+            { "path": "./data/Datasets-HDF5-Compressed/SlottAttentionReview/shop-general-256x256.hdf5", "weight": 1.0, "split": false},
+            { "path": "./data/Datasets-HDF5-Compressed/SlottAttentionReview/gso-general-256x256.hdf5", "weight": 1.0, "split": false}
+        ] 
+  },
+  "model": {
+        "amodal_iou": true,
+        "batch_size": 3,
+        "num_slots": 10,
+        "gestalt_size": 256,
+        "input_depth": false,
+        "input_size": [256,  256], 
+        "object_permanence_strength": 1,
+        "object_regularizer": 0,
+        "position_regularizer": 1,
+        "time_regularizer": 1,
+        "encoder_regularizer": 0.1,
+        "entity_pretraining_steps": 10000,
+        "mixed_precision": false,
+        "gradient_accumulation_steps": 1,
+        "inference_mode": "regularization",
+        "rgb_loss": "YCbCrL2SSIMLoss",
+        "embedding": {
+            "mask": { 
+                "channels": 32,
+                "expansion": 4
+            },
+            "depth": {
+                "channels": 64,
+                "expansion": 4
+            },
+            "rgb": {
+                "channels": 128,
+                "expansion": 4
+            }
+        },
+        "position_proposal": {
+            "channels": 64,
+            "num_slots": 16,
+            "encoder_blocks": [1,2,4,2], 
+            "decoder_blocks": [1,1,1,1],
+            "base_channels": 128
+        },
+        "encoder": {
+            "channels": 32,
+            "blocks": [1,1,3,2],
+            "hyper_channels": 256
+        },
+        "predictor": {
+            "heads": 1,
+            "layers": 3,
+            "channels": 1024,
+            "reg_lambda": 1e-8,
+            "gate": {
+                "num_layers": 3,
+                "num_hidden": 256,
+                "reg_lambda": 1e-5,
+                "noise_level": 0.1
+            }
+        },
+        "decoder": {
+            "mask": {
+                "pretrain_encoder_blocks": [2,4],
+                "pretrain_encoder_channels": 256
+            },
+            "depth": {
+                "layers": 3,
+                "pretrain_encoder_blocks": [2,4],
+                "pretrain_encoder_channels": 256
+            },
+            "rgb": {
+                "layers": 5,
+                "pretrain_encoder_blocks": [4,8],
+                "pretrain_encoder_channels": 256
+            }
+        },
+        "background": {
+            "supervision_factor": 0.1,
+            "depth_weighting": false,
+            "uncertainty_threshold": 0.1,
+            "motion_context_size": 256,
+            "depth_context_size": 256,
+            "latent_channels": 128,
+            "num_layers": 4
+        }
+    }
+}                          
