@@ -1,0 +1,25 @@
+name: loci-s
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - lightning
+  - pytorch-cuda=12.1
+  - h5py
+  - libpng
+  - matplotlib
+  - numpy
+  - torchaudio
+  - torchvision
+  - lz4
+  - einops
+  - opencv
+  - jsmin
+  - pandas
+  - scipy
+  - scikit-image
+  - scikit-learn
+  - pip
+  - pip:
+    - turbojpeg 
