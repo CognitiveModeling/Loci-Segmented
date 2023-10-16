@@ -1,6 +1,6 @@
 # Loci-Segmented: Improving Scene Segmentation Learning
 
-<b>TL;DR:</b> Introducing Loci-Segmented, an extension to Loci, with a dynamic background module. Demonstrates over 28% relative IoU improvement to SOTA on the MOVi dataset.
+<b>TL;DR:</b> Introducing Loci-Segmented, an extension to Loci, with a dynamic background module. Demonstrates over 32% relative IoU improvement to SOTA on the MOVi dataset.
 
 
 https://github.com/CognitiveModeling/Loci-Segmented/assets/28415607/0efa332c-a2c5-40f2-801d-66f79640cbe0
