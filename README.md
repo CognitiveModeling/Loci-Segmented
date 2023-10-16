@@ -17,16 +17,19 @@ conda activate loci-s
 
 ## Dataset and trained models
 
-TODO
+Preprocessed datasets together with model checkpoints can be found [here](https://unitc-my.sharepoint.com/:f:/g/personal/iiimt01_cloud_uni-tuebingen_de/El2HRkcvN0BAh2J4nddwFmABCgtALSfObFYhzTHJPMBJFw?e=8nPkld)
 
 ## Reproducing the results from the paper
-Make sure you download all necessary datasets and model checkpoints and placed them in the right folders. 
-The evaluation scripts for the MOVi datasets can then be started with:
+Make sure you download all necessary datasets and model checkpoints.
+To reproduce the MOVi results run:
 ```
 run-movi-evalulation.sh
+python eval-movi.py
 ```
 
-To run the evaluation on the datasets presented in "Compositional scene representation learning via reconstruction: A survey" run:
+To reproduce the evaluation on the datasets presented in the review paper on "Compositional scene representation learning via reconstruction: A survey" run:
 ```
 run-review.sh
+process-review.sh
+python eval-review.py
 ```
