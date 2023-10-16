@@ -652,12 +652,14 @@ class LociModule(pl.LightningModule):
                         if has_fg_mask[b].item() > 0:
 
                             # Use linear_sum_assignment to find the optimal assignment
-                            #row_ind_rec, col_ind_rec   = linear_sum_assignment(-IoU_matrix_rec[b].cpu().numpy()) 
-                            #row_ind_pred, col_ind_pred = linear_sum_assignment(-IoU_matrix_pred[b].cpu().numpy())
+                            if self.cfg.model_path == "slot-attention-review":
+                                # use intersection here like in the review paper
+                                row_ind_rec, col_ind_rec   = linear_sum_assignment(-intersection_rec[b].cpu().numpy()) 
+                                row_ind_pred, col_ind_pred = linear_sum_assignment(-intersection_pred[b].cpu().numpy())
+                            else:
+                                row_ind_rec, col_ind_rec   = linear_sum_assignment(-IoU_matrix_rec[b].cpu().numpy()) 
+                                row_ind_pred, col_ind_pred = linear_sum_assignment(-IoU_matrix_pred[b].cpu().numpy())
                             
-                            # use intersection here for the review paper
-                            row_ind_rec, col_ind_rec   = linear_sum_assignment(-intersection_rec[b].cpu().numpy()) 
-                            row_ind_pred, col_ind_pred = linear_sum_assignment(-intersection_pred[b].cpu().numpy())
                             
                             # Calculate mean IoU for the optimal assignment
                             mean_reconstruction_IoU += th.sum(IoU_matrix_rec[b][row_ind_rec, col_ind_rec]    * active_mask_rec[b, row_ind_rec])
