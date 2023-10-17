@@ -33,3 +33,26 @@ run-review.sh
 process-review.sh
 python eval-review.py
 ```
+
+## Training
+We extensively utilize pretraining to accelerate the learning process. The training can be broadly divided into five distinct stages:
+
+### Decoder Pretraining:
+Pretrain individual decoders using the commands below:
+```
+python -m model.main -cfg configs/pretrain-mask-decoder.json -pretrain-objects -single-gpu
+python -m model.main -cfg configs/pretrain-depth-decoder.json -pretrain-objects -single-gpu
+python -m model.main -cfg configs/pretrain-rgb-decoder.json -pretrain-objects -single-gpu
+```
+
+### Encoder-Decoder Pretraining:
+For pretraining the loci encoder with the pretrained mask, depth, and RGB decoders (excluding hyper-networks) in a single encoder-decoder pass, use:
+```
+python -m model.main -cfg configs/pretrain-encoder-decoder-stage1.json -pretrain-objects -single-gpu --load-mask <mask-decoder>.ckpt --load-depth <depth-decoder>.ckpt --load-rgb <rgb-decoder>.ckpt
+```
+
+### Hyper-Network Pretraining:
+Train the hyper-networks inside the encoder with three passes through the encoder-decoder using:
+```
+python -m model.main -cfg configs/pretrain-encoder-decoder-stage2.json -pretrain-objects -single-gpu --load-stage1 <encoder-decoder>.ckpt
+```
