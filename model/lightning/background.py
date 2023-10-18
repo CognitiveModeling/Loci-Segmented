@@ -208,7 +208,7 @@ class LociBackgroundModule(pl.LightningModule):
                 self.trainer.local_rank,
                 self.trainer.global_step,
                 self.trainer.current_epoch,
-                (batch_idx + 1) / len(self.trainer.val_dataloaders[0]) * 100,
+                (batch_idx + 1) / len(self.trainer.val_dataloaders) * 100,
                 str(self.timer),
                 self.val_metrics['val_loss'] / (batch_idx + 1),
                 self.val_metrics['val_supervised_uncertainty_loss'] / (batch_idx + 1),

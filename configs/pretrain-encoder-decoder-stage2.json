@@ -39,7 +39,7 @@
         "batch_size": 32,
         "num_slots": 16,
         "gestalt_size": 256,
-        "input_depth": true,
+        "input_depth": false,
         "input_size": [256,  256], 
         "object_permanence_strength": 1,
         "object_regularizer": 0,

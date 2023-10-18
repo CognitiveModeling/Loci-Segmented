@@ -1,0 +1,178 @@
+{                                                                                                     
+  "model_path": "pretrain-background-depth",
+  "num_workers": 4,
+  "prefetch_factor": 1,
+  "learning_rate": 0.0001, 
+  "weight_decay": 0.001,
+  "sequence_len": 24, 
+  "backprop_steps": 2,
+  "pretrainer_iterations": 3,
+  "pretraining_mode": "all",
+  "epochs": 1000,                                                                                   
+  "teacher_forcing": 10,                                                                              
+  "evalualte_ami": true,
+  "world_size": 1,
+  "data": {
+        "train": [
+            { 
+                "path": "./data/Datasets-HDF5-Compressed/Kubric-Datasets/movi-a-train-256x256.hdf5", 
+                "weight": 1.0, "split": false, "depth_weighting": false, "time_std_dev": -1, "static": true, 
+                "uncertainty_regularizer": 0, "rgb_loss_factor": 0, "rgb_warmup": 0, "depth_warmup": 0, "color_input": false
+            },
+            { 
+                "path": "./data/Datasets-HDF5-Compressed/Kubric-Datasets/movi-b-train-256x256.hdf5", 
+                "weight": 1.0, "split": false, "depth_weighting": false, "time_std_dev": -1, "static": true, 
+                "uncertainty_regularizer": 0, "rgb_loss_factor": 0, "rgb_warmup": 0, "depth_warmup": 0, "color_input": true
+            },
+            { 
+                "path": "./data/Datasets-HDF5-Compressed/Kubric-Datasets/movi-c-train-256x256.hdf5", 
+                "weight": 1.0, "split": false, "depth_weighting": false, "time_std_dev": -1, "static": true, 
+                "uncertainty_regularizer": 0, "rgb_loss_factor": 0, "rgb_warmup": 0, "depth_warmup": 0, "color_input": true
+            },
+            { 
+                "path": "./data/Datasets-HDF5-Compressed/Kubric-Datasets/movi-d-train-256x256.hdf5", 
+                "weight": 1.0, "split": false, "depth_weighting": false, "time_std_dev": -1, "static": true, 
+                "uncertainty_regularizer": 0, "rgb_loss_factor": 0, "rgb_warmup": 0, "depth_warmup": 0, "color_input": true
+            },
+            { 
+                "path": "./data/Datasets-HDF5-Compressed/Kubric-Datasets/movi-e-train-256x256.hdf5", 
+                "weight": 1.0, "split": false, "depth_weighting": false, "time_std_dev": -1, "static": false, 
+                "uncertainty_regularizer": 0, "rgb_loss_factor": 0, "rgb_warmup": 0, "depth_warmup": 0, "color_input": true
+            },
+            { 
+                "path": "./data/Datasets-HDF5-Compressed/Kubric-Datasets/movi-f-train-512x512.hdf5", 
+                "weight": 1.0, "split": false, "depth_weighting": false, "time_std_dev": -1, "static": false, 
+                "uncertainty_regularizer": 0, "rgb_loss_factor": 0, "rgb_warmup": 0, "depth_warmup": 0, "color_input": true
+            }
+        ],
+        "val": [
+            { 
+                "path": "./data/Datasets-HDF5-Compressed/Kubric-Datasets/movi-a-validation-256x256.hdf5", 
+                "weight": 1.0, "split": false, "depth_weighting": false, "time_std_dev": -1, "static": true, 
+                "uncertainty_regularizer": 0, "rgb_loss_factor": 0, "rgb_warmup": 0, "depth_warmup": 0, "color_input": false
+            },
+            { 
+                "path": "./data/Datasets-HDF5-Compressed/Kubric-Datasets/movi-b-validation-256x256.hdf5", 
+                "weight": 1.0, "split": false, "depth_weighting": false, "time_std_dev": -1, "static": true, 
+                "uncertainty_regularizer": 0, "rgb_loss_factor": 0, "rgb_warmup": 0, "depth_warmup": 0, "color_input": true
+            },
+            { 
+                "path": "./data/Datasets-HDF5-Compressed/Kubric-Datasets/movi-c-validation-256x256.hdf5", 
+                "weight": 1.0, "split": false, "depth_weighting": false, "time_std_dev": -1, "static": true, 
+                "uncertainty_regularizer": 0, "rgb_loss_factor": 0, "rgb_warmup": 0, "depth_warmup": 0, "color_input": true
+            },
+            { 
+                "path": "./data/Datasets-HDF5-Compressed/Kubric-Datasets/movi-d-validation-256x256.hdf5", 
+                "weight": 1.0, "split": false, "depth_weighting": false, "time_std_dev": -1, "static": true, 
+                "uncertainty_regularizer": 0, "rgb_loss_factor": 0, "rgb_warmup": 0, "depth_warmup": 0, "color_input": true
+            },
+            { 
+                "path": "./data/Datasets-HDF5-Compressed/Kubric-Datasets/movi-e-validation-256x256.hdf5", 
+                "weight": 1.0, "split": false, "depth_weighting": false, "time_std_dev": -1, "static": false, 
+                "uncertainty_regularizer": 0, "rgb_loss_factor": 0, "rgb_warmup": 0, "depth_warmup": 0, "color_input": true
+            },
+            { 
+                "path": "./data/Datasets-HDF5-Compressed/Kubric-Datasets/movi-f-validation-512x512.hdf5", 
+                "weight": 1.0, "split": false, "depth_weighting": false, "time_std_dev": -1, "static": false, 
+                "uncertainty_regularizer": 0, "rgb_loss_factor": 0, "rgb_warmup": 0, "depth_warmup": 0, "color_input": true
+            }
+        ],
+        "test": [
+            { 
+                "path": "./data/Datasets-HDF5-Compressed/Kubric-Datasets/movi-c-test-256x256.hdf5", 
+                "weight": 1.0, "split": false, "depth_weighting": false, "time_std_dev": -1, "static": true, 
+                "uncertainty_regularizer": 0, "rgb_loss_factor": 0, "rgb_warmup": 0, "depth_warmup": 0, "color_input": true
+            },
+            { 
+                "path": "./data/Datasets-HDF5-Compressed/Kubric-Datasets/movi-d-test-256x256.hdf5", 
+                "weight": 1.0, "split": false, "depth_weighting": false, "time_std_dev": -1, "static": true, 
+                "uncertainty_regularizer": 0, "rgb_loss_factor": 0, "rgb_warmup": 0, "depth_warmup": 0, "color_input": true
+            },
+            { 
+                "path": "./data/Datasets-HDF5-Compressed/Kubric-Datasets/movi-e-test-256x256.hdf5", 
+                "weight": 1.0, "split": false, "depth_weighting": false, "time_std_dev": -1, "static": false, 
+                "uncertainty_regularizer": 0, "rgb_loss_factor": 0, "rgb_warmup": 0, "depth_warmup": 0, "color_input": true
+            }
+        ] 
+  },
+  "model": {
+        "batch_size": 32,
+        "num_slots": 16,
+        "gestalt_size": 256,
+        "input_depth": true,
+        "input_size": [256,  256], 
+        "object_permanence_strength": 1,
+        "object_regularizer": 0,
+        "position_regularizer": 1,
+        "time_regularizer": 1,
+        "encoder_regularizer": 0.1,
+        "entity_pretraining_steps": 10000,
+        "mixed_precision": false,
+        "gradient_accumulation_steps": 1,
+        "inference_mode": "segmentation",
+        "rgb_loss": "YCbCrL2SSIMLoss",
+        "embedding": {
+            "mask": { 
+                "channels": 32,
+                "expansion": 4
+            },
+            "depth": {
+                "channels": 64,
+                "expansion": 4
+            },
+            "rgb": {
+                "channels": 128,
+                "expansion": 4
+            }
+        },
+        "position_proposal": {
+            "channels": 64,
+            "num_slots": 16,
+            "encoder_blocks": [1,2,3,1], 
+            "decoder_blocks": [1,1,1,1],
+            "base_channels": 64
+        },
+        "encoder": {
+            "channels": 32,
+            "blocks": [1,1,3,2],
+            "hyper_channels": 256
+        },
+        "predictor": {
+            "heads": 1,
+            "layers": 3,
+            "channels": 1024,
+            "reg_lambda": 1e-8,
+            "gate": {
+                "num_layers": 3,
+                "num_hidden": 256,
+                "reg_lambda": 1e-5,
+                "noise_level": 0.1
+            }
+        },
+        "decoder": {
+            "mask": {
+                "pretrain_encoder_blocks": [2,4],
+                "pretrain_encoder_channels": 256
+            },
+            "depth": {
+                "layers": 3,
+                "pretrain_encoder_blocks": [2,4],
+                "pretrain_encoder_channels": 256
+            },
+            "rgb": {
+                "layers": 5,
+                "pretrain_encoder_blocks": [4,8],
+                "pretrain_encoder_channels": 256
+            }
+        },
+        "background": {
+            "supervision_factor": 0.1,
+            "depth_weighting": false,
+            "uncertainty_threshold": 0.1,
+            "motion_context_size": 256,
+            "depth_context_size": 256,
+            "latent_channels": 64,
+            "num_layers": 2
+        }
+    }
+}                          

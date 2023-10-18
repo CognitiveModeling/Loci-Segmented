@@ -1,13 +1,13 @@
 {                                                                                                     
-  "model_path": "pretrain-mask-decoder",
+  "model_path": "loci-s-depth",
   "num_workers": 4,
   "prefetch_factor": 1,
   "learning_rate": 0.0001, 
   "weight_decay": 0.001,
   "sequence_len": 24, 
   "backprop_steps": 2,
-  "pretrainer_iterations": 0,
-  "pretraining_mode": "mask",
+  "pretrainer_iterations": 3,
+  "pretraining_mode": "all",
   "epochs": 1000,                                                                                   
   "teacher_forcing": 10,                                                                              
   "evalualte_ami": true,
@@ -36,7 +36,7 @@
         ] 
   },
   "model": {
-        "batch_size": 32,
+        "batch_size": 1,
         "num_slots": 16,
         "gestalt_size": 256,
         "input_depth": false,
@@ -49,7 +49,7 @@
         "entity_pretraining_steps": 10000,
         "mixed_precision": false,
         "gradient_accumulation_steps": 1,
-        "inference_mode": "segmentation",
+        "inference_mode": "random",
         "rgb_loss": "YCbCrL2SSIMLoss",
         "embedding": {
             "mask": { 
@@ -111,8 +111,8 @@
             "uncertainty_threshold": 0.1,
             "motion_context_size": 256,
             "depth_context_size": 256,
-            "latent_channels": 64,
-            "num_layers": 2
+            "latent_channels": 128,
+            "num_layers": 4
         }
     }
 }                          

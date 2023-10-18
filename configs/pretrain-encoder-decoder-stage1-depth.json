@@ -1,5 +1,5 @@
 {                                                                                                     
-  "model_path": "pretrain-mask-decoder",
+  "model_path": "pretrain-mask-decoder-depth",
   "num_workers": 4,
   "prefetch_factor": 1,
   "learning_rate": 0.0001, 
@@ -39,7 +39,7 @@
         "batch_size": 32,
         "num_slots": 16,
         "gestalt_size": 256,
-        "input_depth": false,
+        "input_depth": true,
         "input_size": [256,  256], 
         "object_permanence_strength": 1,
         "object_regularizer": 0,
