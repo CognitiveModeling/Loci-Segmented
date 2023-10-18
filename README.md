@@ -40,19 +40,43 @@ We extensively utilize pretraining to accelerate the learning process. The train
 ### Decoder Pretraining:
 Pretrain individual decoders using the commands below:
 ```
-python -m model.main -cfg configs/pretrain-mask-decoder.json -pretrain-objects -single-gpu
-python -m model.main -cfg configs/pretrain-depth-decoder.json -pretrain-objects -single-gpu
-python -m model.main -cfg configs/pretrain-rgb-decoder.json -pretrain-objects -single-gpu
+python -m model.main -cfg configs/pretrain-mask-decoder.json --pretrain-objects --single-gpu
+python -m model.main -cfg configs/pretrain-depth-decoder.json --pretrain-objects --single-gpu
+python -m model.main -cfg configs/pretrain-rgb-decoder.json --pretrain-objects --single-gpu
 ```
 
 ### Encoder-Decoder Pretraining:
-For pretraining the loci encoder with the pretrained mask, depth, and RGB decoders (excluding hyper-networks) in a single encoder-decoder pass, use:
+For pretraining the loci encoder with the pretrained mask, depth, and RGB decoders (excluding hyper-networks) in a single encoder-decoder pass, use either:
 ```
-python -m model.main -cfg configs/pretrain-encoder-decoder-stage1.json -pretrain-objects -single-gpu --load-mask <mask-decoder>.ckpt --load-depth <depth-decoder>.ckpt --load-rgb <rgb-decoder>.ckpt
+python -m model.main -cfg configs/pretrain-encoder-decoder-stage1-depth.json --pretrain-objects --single-gpu --load-mask <mask-decoder>.ckpt --load-depth <depth-decoder>.ckpt --load-rgb <rgb-decoder>.ckpt
+python -m model.main -cfg configs/pretrain-encoder-decoder-stage1.json --pretrain-objects --single-gpu --load-mask <mask-decoder>.ckpt --load-depth <depth-decoder>.ckpt --load-rgb <rgb-decoder>.ckpt
 ```
+where *-depth names the version that uses depth as input.
 
 ### Hyper-Network Pretraining:
-Train the hyper-networks inside the encoder with three passes through the encoder-decoder using:
+Train the hyper-networks inside the encoder with three passes through the encoder-decoder using either:
 ```
-python -m model.main -cfg configs/pretrain-encoder-decoder-stage2.json -pretrain-objects -single-gpu --load-stage1 <encoder-decoder>.ckpt
+python -m model.main -cfg configs/pretrain-encoder-decoder-stage2-depth.json --pretrain-objects --single-gpu --load-stage1 <encoder-decoder>.ckpt
+python -m model.main -cfg configs/pretrain-encoder-decoder-stage2.json --pretrain-objects --single-gpu --load-stage1 <encoder-decoder>.ckpt
+```
+
+### Background Pretraining
+Train the backgound module using either:
+```
+python -m model.main -cfg configs/pretrain-background-depth.json --pretrain-bg --single-gpu
+python -m model.main -cfg configs/pretrain-background.json --pretrain-bg --single-gpu
+```
+
+# Loci Training
+
+TODO
+
+## Visualizations
+Visualizations to inspect the various pretraining states can be generated using:
+```
+python -m model.main -cfg <config> --save-<mask|depth|rgb|objects|bg> --single-gpu --add-text --load <checkpoint>.ckpt
+```
+Visualizing the final trained loci-s model can be done using
+```
+python -m model.main -cfg <config> --save --single-gpu --add-text --load <checkpoint>.ckpt
 ```
