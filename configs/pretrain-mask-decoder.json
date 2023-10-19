@@ -7,7 +7,7 @@
   "sequence_len": 24, 
   "backprop_steps": 2,
   "pretrainer_iterations": 0,
-  "pretraining_mode": "all",
+  "pretraining_mode": "mask",
   "epochs": 1000,                                                                                   
   "teacher_forcing": 10,                                                                              
   "evalualte_ami": true,

@@ -1,5 +1,5 @@
 {                                                                                                     
-  "model_path": "pretrain-mask-decoder",
+  "model_path": "pretrain-encoder-decoder-stage2",
   "num_workers": 4,
   "prefetch_factor": 1,
   "learning_rate": 0.0001, 

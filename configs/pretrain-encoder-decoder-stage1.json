@@ -1,5 +1,5 @@
 {                                                                                                     
-  "model_path": "pretrain-mask-decoder",
+  "model_path": "pretrain-encoder-decoder-stage1",
   "num_workers": 4,
   "prefetch_factor": 1,
   "learning_rate": 0.0001, 
@@ -7,7 +7,7 @@
   "sequence_len": 24, 
   "backprop_steps": 2,
   "pretrainer_iterations": 0,
-  "pretraining_mode": "mask",
+  "pretraining_mode": "all",
   "epochs": 1000,                                                                                   
   "teacher_forcing": 10,                                                                              
   "evalualte_ami": true,
