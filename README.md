@@ -40,8 +40,12 @@ python eval-review.py
 
 ## Use your own data
 
-We provide a example dataset creating script in [data/datasets/create-dataset-example.py](data/datasets/create-dataset-example.py) that you can adjust to your needs.
+We provide a example dataset creating [script](data/datasets/create-dataset-example.py) that you can adjust to your needs.
 
+You can also inspect any compatible dataset using our [Dataset Viewer](data/plot_hdf5.py)
+```bash
+data/plot_hdf5.py <dataset>.hdf5
+```
 ---
 
 
