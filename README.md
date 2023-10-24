@@ -11,7 +11,7 @@ A suitable [conda](https://conda.io/) environment named `loci-s` can be created
 and activated with:
 
 ```
-conda env create -f environment.yaml
+conda env create -f environment.yml
 conda activate loci-s
 ```
 
