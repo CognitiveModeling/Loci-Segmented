@@ -38,6 +38,10 @@ process-review.sh
 python eval-review.py
 ```
 
+## Use your own data
+
+We provide a example dataset creating script in [data/datasets/create-dataset-example.py](data/datasets/create-dataset-example.py) that you can adjust to your needs.
+
 ---
 
 
