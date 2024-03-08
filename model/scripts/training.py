@@ -184,15 +184,9 @@ def train_background(cfg: Configuration, checkpoint_path):
     data_module = LociBackgroundDataModule(cfg)
     model       = LociBackgroundModule(cfg)
 
-    uncertaint_state_dict = {}
-    for k, v in model.net.uncertainty_estimation.state_dict().items():
-        uncertaint_state_dict[k] = v
-
     # Load the model from the checkpoint if provided, otherwise create a new model
     if checkpoint_path is not None and os.path.exists(checkpoint_path):
         model = LociBackgroundModule.load_from_checkpoint(checkpoint_path, cfg=cfg)
-
-    model.net.uncertainty_estimation.load_state_dict(uncertaint_state_dict) 
 
     checkpoint_callback = ModelCheckpoint(
         dirpath=f"out/{cfg.model_path}",
