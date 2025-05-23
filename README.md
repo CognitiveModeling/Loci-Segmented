@@ -21,7 +21,7 @@ conda activate loci-s
 
 ## Dataset and trained models
 
-Preprocessed datasets together with model checkpoints can be found [here](https://unitc-my.sharepoint.com/:f:/g/personal/iiimt01_cloud_uni-tuebingen_de/El2HRkcvN0BAh2J4nddwFmABCgtALSfObFYhzTHJPMBJFw?e=8nPkld)
+Preprocessed datasets together with model checkpoints can be found [here](https://unitc-my.sharepoint.com/:f:/g/personal/iiimt01_cloud_uni-tuebingen_de/El2HRkcvN0BAh2J4nddwFmABCgtALSfObFYhzTHJPMBJFw?e=7cfuu3)
 
 ## Reproducing the results from the paper
 Make sure you download all necessary datasets and model checkpoints.
